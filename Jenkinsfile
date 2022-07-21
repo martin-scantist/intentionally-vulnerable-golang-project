@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Cloning Git') {
+            steps {
+                git branch: 'master', url: 'http://github.com/martin-scantist/intentionally-vulnerable-golang-project/'
+                echo "Git cloned!"
+                }
+        }
         stage ('Scantist') {
             steps {
                 sh '''
